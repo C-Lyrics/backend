@@ -73,7 +73,7 @@ foreach ($urls as $url) {
 }
 
 if(count($lyrics) == 0) {
-    echo '{"error": 1)';
+    echo '{"error": 1}';
 } else {
     echo json_encode($lyrics);    
 }
