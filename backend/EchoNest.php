@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/php-echonest-api-master/lib/EchoNest/Autoloader.php';
 
+
 EchoNest_Autoloader::register();
 
 class EchoNestConnection {
@@ -30,6 +31,23 @@ class EchoNestConnection {
 		));
 		return $results;
 	}
+
+	public function getApiKey() {
+		return $this->apiKey;
+	}
+
+	public function getClient() {
+		return $this->echonest;
+	}
+
+	public function getArtistApi() {
+		return $this->artistApi;
+	}
+
+	public function getSongApi() {
+		return $this->songApi;
+	}
+
 
 }
 

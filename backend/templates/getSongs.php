@@ -1,6 +1,18 @@
 <?php 
 
+require './WebScraper.php';
+
+$webscraper = new WebScraper($artist);
+$urls = $webscraper->getUrlList();
+$lyrics = $webscraper->getLyrics($urls);
+
+if(count($lyrics) == 0) {
+    echo '{"error": 1)';
+} else {
+    echo json_encode($lyrics);
+}
 //http://www.jacobward.co.uk/working-with-the-scraped-data-part-2/
+/*
 function scrape_between($data, $start, $end){
     $data = stristr($data, $start); 
     $data = substr($data, strlen($start));  
@@ -11,7 +23,6 @@ function scrape_between($data, $start, $end){
 
 
 function curl($url) {
-    // Assigning cURL options to an array
     $options = Array(
         CURLOPT_RETURNTRANSFER => TRUE,
         CURLOPT_FOLLOWLOCATION => TRUE,
@@ -30,7 +41,6 @@ function curl($url) {
     return $data;   
 }
 
-//adds a '+' instead of an empty space for url formatting
 $newArtist = str_replace(" ", "+", $artist);
 $defaultUrl = 'http://www.lyricsfreak.com';
 $artistUrl = $defaultUrl . '/a/' . $newArtist . '/';
@@ -54,10 +64,6 @@ foreach ($separate_data as $url) {
 
 $lyrics = array();
 
-//goes through each lyrics page and takes the full lyrics
-//stores the artist name, title of song, and lyrics as an array
-//that array is then stored in $lyrics array
-//when all song lyrics have been found, it will return the $lyrics array as a json file to the page
 foreach ($urls as $url) {
     $dom = new DOMDocument();
     $dom->validateOnParse = true;
@@ -76,7 +82,7 @@ if(count($lyrics) == 0) {
     echo '{"error": 1)';
 } else {
     echo json_encode($lyrics);    
-}
+}*/
 
 
 

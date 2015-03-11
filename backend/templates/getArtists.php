@@ -1,5 +1,7 @@
 <?php 
 
+require './EchoNest.php';
+
 $e = new EchoNestConnection();
 
 $artist = $name;
